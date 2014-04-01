@@ -113,9 +113,9 @@ module Rails
         # data in START_CTX then we know we're being preloaded. Unicorn does
         # not provide application-level hooks for executing code after the
         # process has forked, so we reconnect lazily.
-        if defined?(Unicorn) && !Unicorn::HttpServer::START_CTX.empty?
-          ::Mongoid.default_session.disconnect if ::Mongoid.configured?
-        end
+        # if defined?(Unicorn) && !Unicorn::HttpServer::START_CTX.empty?
+        #   ::Mongoid.default_session.disconnect if ::Mongoid.configured?
+        # end
 
         # Passenger provides the :starting_worker_process event for executing
         # code after it has forked, so we use that and reconnect immediately.
